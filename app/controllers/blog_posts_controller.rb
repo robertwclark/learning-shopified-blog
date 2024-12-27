@@ -36,6 +36,6 @@ class BlogPostsController < ApplicationController
           redirect_to root_path
       end
       def blog_post_params
-          params.expect(blog_post: [ :title, :body, :published_at ])
+          params.expect(blog_post: [ :title, :content, :published_at ])
       end
 end
