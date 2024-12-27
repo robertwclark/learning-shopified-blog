@@ -1,0 +1,6 @@
+<h1><%= @blog_post.title %></h1>
+<p><%= @blog_post.body%></p>
+<% if authenticated? %>
+  <%= link_to "Edit", edit_blog_post_path(@blog_post) %>
+  <%= button_to "Delete", @blog_post, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+<% end %>
