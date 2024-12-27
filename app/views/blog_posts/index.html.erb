@@ -4,7 +4,7 @@
   <% @blog_posts.each do |blog_post| %>
     <div>
 
-      <%= link_to blog_post.title, blog_post_path(blog_post) %>
+     <h2> <%= link_to blog_post.title, blog_post_path(blog_post) %></h2>
     </div>
     <% if blog_post.draft? %>
       <div class="p-2 rounded bg-gray-100 text-gray-900">
@@ -19,5 +19,9 @@
     <%= blog_post.content %>
 
   <% end %>
+  <% if @pagy.count > @pagy.items %>
+    <div class="my-16">
+      <%== pagy_nav(@pagy) %>
+    </div>
+  <% end %>
 </div>
-<%= debug @blog_posts %>
