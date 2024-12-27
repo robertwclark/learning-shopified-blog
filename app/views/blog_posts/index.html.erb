@@ -3,8 +3,20 @@
 <div id="posts">
   <% @blog_posts.each do |blog_post| %>
     <div>
-      <%=link_to blog_post.title, blog_post_path(blog_post) %>
+
+      <%= link_to blog_post.title, blog_post_path(blog_post) %>
     </div>
+    <% if blog_post.draft? %>
+      <div class="p-2 rounded bg-gray-100 text-gray-900">
+        Draft
+      </div>
+    <% end %>
+    <% if blog_post.scheduled? %>
+      <div class="p-2 rounded bg-blue-100 text-blue-900">
+        Scheduled
+      </div>
+    <% end %>
+
   <% end %>
 </div>
 <%= debug @blog_posts %>

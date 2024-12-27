@@ -3,7 +3,7 @@ class BlogPostsController < ApplicationController
   before_action :set_blog_post, only: %i[ show edit update ]
 
   def index
-    @blog_posts = BlogPost.all
+    @blog_posts = authenticated? ? BlogPost.sorted : BlogPost.published.sorted
   end
   def show
     rescue ActiveRecord::RecordNotFound
@@ -31,9 +31,11 @@ class BlogPostsController < ApplicationController
   end
   private
       def set_blog_post
-        @blog_post = BlogPost.find(params[:id])
+        @blog_post = authenticated? ? BlogPost.find(params[:id]) : BlogPost.published.find(params[:id])
+        rescue ActiveRecord::RecordNotFound
+          redirect_to root_path
       end
       def blog_post_params
-          params.expect(blog_post: [ :title, :body ])
+          params.expect(blog_post: [ :title, :body, :published_at ])
       end
 end
