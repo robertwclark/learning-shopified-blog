@@ -178,7 +178,7 @@ GEM
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     ostruct (0.6.1)
-    pagy (6.5.0)
+    pagy (9.3.3)
     parallel (1.26.3)
     parser (3.3.6.0)
       ast (~> 2.4.1)
@@ -372,7 +372,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
-  pagy (~> 6.0)
+  pagy (~> 9.3)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.1)
